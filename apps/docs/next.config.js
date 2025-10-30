@@ -1,4 +1,8 @@
+import { withMicrofrontends } from "@vercel/microfrontends/next/config";
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  turbopack: {},
+  basePath: "/docs",
+};
 
-export default nextConfig;
+export default withMicrofrontends(nextConfig);
