@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "@repo/ui/styles/globals.css";
+import { SidebarTrigger } from "@repo/ui/components/sidebar";
+import { AppSidebar } from "@repo/ui/components/app/AppSidebar";
+import { Providers } from "@/components/Providers";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,9 +25,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <Providers>
+          <AppSidebar />
+          <SidebarTrigger />
+          {children}
+        </Providers>
       </body>
     </html>
   );
