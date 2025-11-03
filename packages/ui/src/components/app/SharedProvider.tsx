@@ -4,7 +4,7 @@ import type * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { SidebarProvider } from "@repo/ui/components/sidebar";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function SharedProvider({ children }: { children: React.ReactNode }) {
   return (
     <NextThemesProvider
       attribute="class"

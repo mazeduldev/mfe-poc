@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@repo/ui/styles/globals.css";
-import { SidebarTrigger } from "@repo/ui/components/sidebar";
+import { SidebarInset, SidebarTrigger } from "@repo/ui/components/sidebar";
 import { AppSidebar } from "@repo/ui/components/app/AppSidebar";
-import { Providers } from "@/components/Providers";
+import { SharedProvider } from "@repo/ui/components/app/SharedProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,11 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Providers>
+        <SharedProvider>
           <AppSidebar softNav={["/", "/calendar", "/search", "/settings"]} />
-          <SidebarTrigger />
-          {children}
-        </Providers>
+          <div className="flex flex-col">
+            <SidebarTrigger />
+            <SidebarInset>{children}</SidebarInset>
+          </div>
+        </SharedProvider>
       </body>
     </html>
   );
