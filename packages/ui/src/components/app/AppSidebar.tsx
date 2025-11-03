@@ -99,22 +99,15 @@ export function AppSidebar({ softNav }: AppSidebarProps) {
                     <SidebarMenuButton
                       asChild
                       // isActive={isActive}
-                      size={"lg"}
                     >
                       {item.softNav ? (
-                        <Link
-                          href={item.url}
-                          className="flex items-center space-x-2"
-                        >
-                          <Icon size={30} />
+                        <Link href={item.url}>
+                          <Icon />
                           <span>{item.title}</span>
                         </Link>
                       ) : (
-                        <a
-                          href={item.url}
-                          className="flex items-center space-x-2"
-                        >
-                          <Icon size={30} />
+                        <a href={item.url}>
+                          <Icon />
                           <span>{item.title}</span>
                         </a>
                       )}
