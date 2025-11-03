@@ -11,6 +11,7 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
     "@repo/ui": "workspace:*",
     "@vercel/microfrontends": "^2.1.2",
     "next": "^16.0.0",
