@@ -1,13 +1,9 @@
-# Turborepo starter
+# Next.js Micro-frontends POC
 
-This Turborepo starter is maintained by the Turborepo core team.
-
-## Using this example
-
-Run the following command:
+This project is generated using [Turborepo](https://turborepo.com/) for doing some POC on [Next.js micro-frontends](https://nextjs.org/docs/app/guides/multi-zones). The following command was used to generate the project.
 
 ```sh
-npx create-turbo@latest
+pnpm dlx create-turbo@latest
 ```
 
 ## What's inside?
@@ -37,7 +33,7 @@ This Turborepo has some additional tools already setup for you:
 To build all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd mfe-poc
 
 # With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
 turbo build
@@ -65,7 +61,7 @@ pnpm exec turbo build --filter=docs
 To develop all apps and packages, run the following command:
 
 ```
-cd my-turborepo
+cd mfe-poc
 
 # With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
 turbo dev
@@ -98,7 +94,7 @@ Turborepo can use a technique known as [Remote Caching](https://turborepo.com/do
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
 
 ```
-cd my-turborepo
+cd mfe-poc
 
 # With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
 turbo login
