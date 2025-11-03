@@ -19,7 +19,14 @@ import {
 } from "../sidebar";
 import Link from "next/link";
 
-const navItems = [
+interface NavItem {
+  title: string;
+  url: string;
+  icon: React.ComponentType<{ size?: number | string }>;
+  softNav?: boolean;
+}
+
+const navItems: NavItem[] = [
   {
     title: "Web",
     url: "/",
@@ -29,7 +36,6 @@ const navItems = [
     title: "Docs",
     url: "/docs",
     icon: Files,
-    hardNav: true,
   },
   {
     title: "Calendar",
@@ -48,7 +54,21 @@ const navItems = [
   },
 ];
 
-export function AppSidebar() {
+interface AppSidebarProps {
+  softNav?: string[];
+}
+
+export function AppSidebar({ softNav }: AppSidebarProps) {
+  const processedNavItems: NavItem[] = softNav
+    ? navItems.map((item) => {
+        if (softNav.includes(item.url)) {
+          return { ...item, softNav: true };
+        }
+        return item;
+      })
+    : navItems;
+  console.log(processedNavItems);
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -70,7 +90,7 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {navItems.map((item) => {
+              {processedNavItems.map((item) => {
                 const Icon = item.icon;
                 // const isActive = pathname === item.href;
 
@@ -81,15 +101,7 @@ export function AppSidebar() {
                       // isActive={isActive}
                       size={"lg"}
                     >
-                      {item.hardNav ? (
-                        <a
-                          href={item.url}
-                          className="flex items-center space-x-2"
-                        >
-                          <Icon size={30} />
-                          <span>{item.title}</span>
-                        </a>
-                      ) : (
+                      {item.softNav ? (
                         <Link
                           href={item.url}
                           className="flex items-center space-x-2"
@@ -97,6 +109,14 @@ export function AppSidebar() {
                           <Icon size={30} />
                           <span>{item.title}</span>
                         </Link>
+                      ) : (
+                        <a
+                          href={item.url}
+                          className="flex items-center space-x-2"
+                        >
+                          <Icon size={30} />
+                          <span>{item.title}</span>
+                        </a>
                       )}
                     </SidebarMenuButton>
                   </SidebarMenuItem>
