@@ -23,7 +23,6 @@ interface NavItem {
   title: string;
   url: string;
   icon: React.ComponentType<{ size?: number | string }>;
-  softNav?: boolean;
 }
 
 const navItems: NavItem[] = [
@@ -59,16 +58,6 @@ interface AppSidebarProps {
 }
 
 export function AppSidebar({ softNav }: AppSidebarProps) {
-  const processedNavItems: NavItem[] = softNav
-    ? navItems.map((item) => {
-        if (softNav.includes(item.url)) {
-          return { ...item, softNav: true };
-        }
-        return item;
-      })
-    : navItems;
-  console.log(processedNavItems);
-
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -90,7 +79,8 @@ export function AppSidebar({ softNav }: AppSidebarProps) {
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
-              {processedNavItems.map((item) => {
+              {navItems.map((item) => {
+                const isSoft = softNav?.includes(item.url);
                 const Icon = item.icon;
                 // const isActive = pathname === item.href;
 
@@ -100,7 +90,7 @@ export function AppSidebar({ softNav }: AppSidebarProps) {
                       asChild
                       // isActive={isActive}
                     >
-                      {item.softNav ? (
+                      {isSoft ? (
                         <Link href={item.url}>
                           <Icon />
                           <span>{item.title}</span>
