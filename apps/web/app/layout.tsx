@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <SharedProvider>
-          <AppSidebar softNav={["/", "/calendar", "/search", "/settings"]} />
+          <AppSidebar softNav={["/", "calendar", "search", "settings"]} />
           <div className="flex flex-col">
             <SidebarTrigger />
             <SidebarInset>{children}</SidebarInset>

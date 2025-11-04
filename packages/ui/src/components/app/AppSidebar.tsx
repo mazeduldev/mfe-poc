@@ -34,22 +34,22 @@ const navItems: NavItem[] = [
   },
   {
     title: "Docs",
-    url: "/docs",
+    url: "docs",
     icon: Files,
   },
   {
     title: "Calendar",
-    url: "/calendar",
+    url: "calendar",
     icon: Calendar,
   },
   {
     title: "Search",
-    url: "/search",
+    url: "search",
     icon: Search,
   },
   {
     title: "Settings",
-    url: "/settings",
+    url: "settings",
     icon: Settings,
   },
 ];
